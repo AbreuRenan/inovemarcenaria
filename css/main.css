@@ -7,6 +7,7 @@
 }
 body {
     font-family: 'Inter', sans-serif;
+    height: 100vh;
 }
 a {
     text-decoration: none;
@@ -85,4 +86,29 @@ header .bg-dark {
 #history-home .card-text+a  {
     position: absolute;
     bottom: 0;
+}
+
+.login-body h5.card-title {
+    font-weight: 800;
+}
+.login-card {
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
+    background-color: rgba(255,255,255,0.75);
+}
+
+.login-card div>button {
+    width: 50%;
+}
+
+.input-group .btn[type=submit]:hover {
+    background-color: rgba(250,250,250);
+    color: black;
+    font-weight: 600;
+}
+.login-voltar  {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    color: black;
+    border: 1px solid rgba(0,0,0,0.2);
 }
