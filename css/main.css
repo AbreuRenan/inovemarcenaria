@@ -106,7 +106,7 @@ header .bg-dark {
     font-weight: 600;
 }
 .login-voltar  {
-    position: absolute;
+    position: relative;
     top: 25px;
     left: 25px;
     color: black;
