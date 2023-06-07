@@ -36,22 +36,6 @@ p {
 .logo {
     height: 72px;
 }
-.translateY-to-center {
-    bottom: 50%;
-    transform: translateY(50%);
-}
-.text-right {
-    text-align: right;
-}
-.h-5 {
-    border: 1px solid red;
-    height: 500px;
-}
-.dev {
-    border: 1px solid red;
-    min-height: 200px;
-}
-
 .destaques-home {
     padding: 100px 40px 100px 40px;
 }

@@ -1,6 +1,8 @@
 <?php 
+$errorset = false;
 if(isset($_GET['error'])) {
     if ($_GET['error'] == 401) {
+        $errorset = true;
         $erromsg = 'Não autorizado';
     }
 }
@@ -14,13 +16,19 @@ require_once('./src/header.php');
             <div class="card login-card">
                 <div class="card-body input-group d-flex flex-column align-items-center gap-2">
                     <h5 class="card-title text-center p-3">Login</h5>
-                    <div class="d-flex gap-3 flex-column mx-2 my-4">
+                    <div class="d-flex gap-3 flex-column mx-2 mt-3">
                         <input type="text" id="username" name="username" placeholder="Nome de usuário" class="form-control">
                         <input type="password" id="password" name="password" placeholder="Senha" class="form-control">
-                        <div class="form-control border-0 d-flex justify-content-between p-0 gap-1">
+                        <div class="form-control border-0 d-flex justify-content-between p-0 gap-1 pb-3">
                             <button type="submit" class="btn btn-dark">Login</button>
                             <button type="reset" class="btn btn-outline-secondary flex-grow-1">Cancelar</button>
                         </div>
+                        <?php 
+                            if ($errorset) { ?>
+                                <div class="d-flex bg-danger-subtle justify-content-center align-items-center rounded p-1  mt-3">
+                                    <p class="text-danger"><?= $erromsg ?></p>
+                                </div>
+                            <?php }?>
                     </div>
                 </div>
             </div>
