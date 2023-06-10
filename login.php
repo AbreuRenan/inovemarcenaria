@@ -1,12 +1,18 @@
 <?php 
 $errorset = false;
+$erromsg = [
+    401 => 'Não autorizado',
+    402 => 'Logout com Sucesso'
+];
 if(isset($_GET['error'])) {
-    if ($_GET['error'] == 401) {
-        $errorset = true;
-        $erromsg = 'Não autorizado';
+    $errorcod = $_GET['error'];
+    $errorset = true;
+    if (!array_key_exists($errorcod, $erromsg)) {
+        $errorcod = 401;
     }
 }
-require_once('./src/header.php');
+
+require_once('./pages/header.php');
 ?>
 
 <body class="login-body container-fluid p-5 d-flex justify-content-center align-items-center">
@@ -25,8 +31,8 @@ require_once('./src/header.php');
                         </div>
                         <?php 
                             if ($errorset) { ?>
-                                <div class="d-flex bg-danger-subtle justify-content-center align-items-center rounded p-1  mt-3">
-                                    <p class="text-danger"><?= $erromsg ?></p>
+                                <div class="d-flex <?php if ($errorcod == 401) {echo 'bg-danger-subtle';} else { echo 'bg-success-subtle';} ?> justify-content-center align-items-center rounded p-1  mt-3">
+                                    <p class=<?php if ($errorcod == 401) {echo 'text-danger'; } else { echo 'text-success'; } ; ?>><?= $erromsg[$errorcod] ?></p>
                                 </div>
                             <?php }?>
                     </div>

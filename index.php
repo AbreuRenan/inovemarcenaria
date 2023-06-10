@@ -1,5 +1,5 @@
 <?php 
-require_once('./src/header.php');
+require_once('./pages/header.php');
 ?>
 
 <section id="carousel-home" class="container-fluid px-0">

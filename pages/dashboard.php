@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../src/db.php');
 $greetings = 'Bem vindo ' . $_SESSION['user'];
 ?>
 
@@ -11,6 +12,7 @@ $greetings = 'Bem vindo ' . $_SESSION['user'];
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/main.css">
     <script src="../js/bootstrap.min.js"></script>
+    
     <title>Inove Marcenária</title>
 </head>
 
@@ -24,26 +26,36 @@ $greetings = 'Bem vindo ' . $_SESSION['user'];
             </button>
             <div class="collapse navbar-collapse" id="navbar-header">
                 <ul class="navbar-nav mr-auto gap-3 d-flex flex-column w-100">
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a id="menu-home" class="nav-link" href="#menu-home">Home</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a id="menu-produtos" class="nav-link" href="#menu-produtos">Produtos</a>
                     </li>
                     <li class="nav-item">
                         <a id="menu-opcoes" class="nav-link" href="#menu-opcoes">Opções</a>
                     </li>
                     <li class="nav-item">
-                        <a id="menu-sair" class="nav-link" href="#menu-sair">Sair</a>
+                        <a id="menu-sair" class="nav-link" href="../src/auth.php?cod=2">Sair</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
-    <div class="bg-light main-grid p-3 rounded-start-4">div 3</div>
+    <div class="bg-light main-grid p-3 rounded-start-4">
+        <hr>
+        <h3><pre><?php
+            $produtos = consultarDB('produtos');
+            while ($produto = $produtos->fetchArray(SQLITE3_ASSOC)) {
+                echo '<h3> '.$produto["nome"].'</h3>';
+                echo '<h5> '.$produto["preco"].'</h5>';
+                echo '<p> '.$produto["descricao"].'</p>';
+                echo '<hr>';
+            }
+
+        ?></pre></h3>
+    </div>
 
 </body>
-
-
-
+<script src="../js/dashboard.js"></script>
 </div>

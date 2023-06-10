@@ -1,19 +1,21 @@
 #dash-body.grid {
     display: grid;
     grid-template-columns: 200px 3fr 1fr;
-    grid-template-rows: minmax(auto, 80px) 1fr ;
-    grid-template-areas: 
-    "header-grid header-grid header-grid"
-    "sidenav-grid main-grid main-grid";
-    
+    grid-template-rows: minmax(auto, 80px) 1fr;
+    grid-template-areas:
+        "header-grid header-grid header-grid"
+        "sidenav-grid main-grid main-grid";
+
 }
 
 .header-grid {
     grid-area: header-grid;
 }
+
 .sidenav-grid {
     grid-area: sidenav-grid;
 }
+
 .main-grid {
     grid-area: main-grid;
 }
@@ -21,21 +23,24 @@
 .sidenav-grid .menu-list {
     height: 100%;
 }
-.nav-item a{
+
+.nav-item a {
     border-radius: 20px 0 0 20px;
-    transition: all .8s ease ;
 }
 
-.nav-item.active, .nav-item a:hover {
+.nav-item a {
+    width: 100%;
+}
+.nav-item.active {
     background-color: rgb(248, 249, 250);
     border-radius: 20px 0 0 20px;
     transform: translateX(25%);
     text-indent: 10px;
-    transition: all .8s ease ;
-    color: black!important;
+    color: black !important;
     font-weight: 600;
     width: 80%;
 }
+
 .nav-item.active::before {
     content: "";
     position: absolute;
@@ -47,6 +52,7 @@
     border-bottom-right-radius: 20px;
     box-shadow: 5px 5px 0px 4px rgb(248, 249, 250);
 }
+
 .nav-item.active::after {
     content: "";
     position: absolute;
@@ -58,6 +64,7 @@
     border-top-right-radius: 20px;
     box-shadow: 5px -5px 0px 4px rgb(248, 249, 250);
 }
-.nav-item.active>*{
-    color: black!important;
+
+.nav-item.active>* {
+    color: black !important;
 }
