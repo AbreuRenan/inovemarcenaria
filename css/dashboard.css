@@ -68,3 +68,6 @@
 .nav-item.active>* {
     color: black !important;
 }
+.nav-link {
+    z-index: 3;
+}
