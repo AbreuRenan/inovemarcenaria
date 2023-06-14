@@ -5,6 +5,7 @@ btns.forEach(element => {
             element.classList.remove('active');
         })
         e.target.parentNode.classList.add('active');
+        sidenavMenuNavigationToggler();
     })
 });
 
@@ -65,3 +66,27 @@ function criarListaProdutos(objetoProdutos) {
     `)
 }
 console.log('dashboard.js loaded')
+
+
+function sidenavMenuNavigationToggler() {
+    const area_id = $('.sidenav-grid .active').children()[0].id;
+    switch (area_id) {
+        case 'menu-home':
+            $('#main-home').addClass('fade').hide();
+            $('#main-produtos').removeClass('fade').show();
+            $('#main-opcoes').addClass('fade').hide();
+            break;
+        case 'menu-produtos':
+            $('#main-home').removeClass('fade').show();
+            $('#main-produtos').addClass('fade').hide();
+            $('#main-opcoes').addClass('fade').hide();
+            break;
+        case 'menu-opcoes':
+            $('#main-home').addClass('fade').hide();
+            $('#main-produtos').addClass('fade').hide();
+            $('#main-opcoes').removeClass('fade').show();
+            break;
+        default:
+            break;
+    }
+}

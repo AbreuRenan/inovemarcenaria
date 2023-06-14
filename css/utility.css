@@ -28,3 +28,24 @@
 .text-right {
     text-align: right;
 }
+
+.imgSize-1 {
+    width: 5rem;
+    height: 5rem;
+}
+.imgSize-2 {
+    width: 7rem;
+    height: 7rem;
+}
+.imgSize-3 {
+    width: 12rem;
+    height: 12rem;
+}
+.imgSize-4 {
+    width: 18rem;
+    height: 18rem;
+}
+.imgSize-5 {
+    width: 25rem;
+    height: 25rem;
+}

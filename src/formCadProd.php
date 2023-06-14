@@ -1,4 +1,4 @@
-<form id="form_cad_produto" action="main.php" method="POST" class="container p-2" enctype="multipart/form-data">
+<form id="form_cad_produto" action="../src/produtos_crud.php" method="POST" class="container p-2" enctype="multipart/form-data">
     <div class="col row">
         <div class="col-8 d-flex flex-column gap-2">
             <label class="form-label" for="nome_produto">Nome Produto</label>
@@ -23,4 +23,5 @@
     <div class="col row p-2">
         <input type="submit" value="enviar" class="btn btn-primary">
     </div>
+    <input type="hidden" value="insert" name="operation">
 </form>

@@ -1,15 +1,18 @@
 <?php
-require_once("db.php");
+require_once("querys.php");
 header('Content-Type: application/json');
-function salvarIMG($file)
-{
-    $target_file = "../img/uploads/" . basename($file["name"]);
-    move_uploaded_file($file["tmp_name"], $target_file);
-}
+
 if ($_POST['operation'] == 'select') {
-    $pdo = conectarBanco();
-    $query = $pdo->prepare('SELECT * FROM produtos');
-    $query->execute();
-    echo json_encode($query->fetchAll(PDO::FETCH_ASSOC));
+    $select = listarProdutos();
+    echo json_encode($select);
+}
+
+if ($_POST['operation'] == 'insert') {
+    $formData['nome'] = $_POST['nome_produto'];
+    $formData['preco'] = $_POST['preco_produto'];
+    $formData['descricao'] = $_POST['descricao_produto'];
+    $formData['img'] = $_FILES['img_produto'];
+    cadastrarProdutos($formData);
+
 }
 ?>
