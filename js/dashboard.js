@@ -8,54 +8,70 @@ btns.forEach(element => {
     })
 });
 
-const imgPrevBtn = document.getElementById("img_preview_container");
-imgPrevBtn.addEventListener('click', () => {
-    const div = document.querySelector('[for^=img_produto]');
-    const imgPrev = document.getElementById("img_preview")
-    const imgInput = document.getElementById("img_produto")
-    div.click()
-    imgInput.onchange = evt => {
-        const [file] = imgInput.files
-        if (file) {
-            imgPrev.src = URL.createObjectURL(file)
+try {
+    const imgPrevBtn = document.getElementById("img_preview_container");
+    imgPrevBtn.addEventListener('click', () => {
+        const div = document.querySelector('[for^=img_produto]');
+        const imgPrev = document.getElementById("img_preview")
+        const imgInput = document.getElementById("img_produto")
+        div.click()
+        imgInput.onchange = evt => {
+            const file = imgInput.files[0]
+            if (file) {
+                imgPrev.src = URL.createObjectURL(file)
+            }
         }
-      }
-})
-
-$('#form_cad_produto').submit(function(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('nome_produto', $('#nome_produto').val());
-    formData.append('preco_produto', $('#preco_produto').val());
-    formData.append('img_produto', $('#img_produto').val());
-    formData.append('descricao_produto', $('#descricao_produto').val());
-    formData.append('operation', 'insert');
-    const productObj = {
-        nome: $('#nome_produto').val(),
-        preco: $('#preco_produto').val(),
-        imgURL: $('#img_produto').prop('files')[0],
-        desc: $('#descricao_produto').val(),
-        operation: 'insert'
-    }
-    $.ajax({
-        url: '../src/produtos_crud.php',
-        method: 'POST',
-        dataType: 'json',
-        data: productObj
-    }).done( function(result) {
-        console.log(result)
     })
+} catch (error) {
+    console.log(error)
+}
+
+$('#show-tab').ready(() => {
+    getProdutos()
 })
-
-
-$('#show-tab').click( () => {
+function getProdutos() {
     $.ajax({
         url: '../src/produtos_crud.php',
         method: 'POST',
         dataType: 'json',
         data: { 'operation': 'select' }
-    }).done( result => {
-        console.log(result)
-        
+    }).done(result => {
+        result.forEach(element => {
+            const data = {
+                id: element.id,
+                nome: element.nome,
+                preco: element.preco,
+                descricao: element.descricao,
+                imgURL: element.img
+            }
+
+            criarViewProdutos(data);
+        });
     })
-})
+}
+function criarViewProdutos(objetoProdutos) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    const aDel = document.createElement('a');
+    const aEdit = document.createElement('a');
+    const div = document.createElement('div');
+    const iconDel = document.createElement('i');
+    const iconEdit = document.createElement('i');
+
+    li.classList.add("d-flex", "list-group-item", "justify-content-between");
+    div.classList.add("icons", "d-flex", "gap-3", "align-items-center")
+    a.href = `produto.php?crud=2&id=${objetoProdutos.id}`;
+    a.innerHTML = objetoProdutos.nome;
+    li.appendChild(a);
+    li.appendChild(div);
+    div.appendChild(aDel);
+    div.appendChild(aEdit);
+    aDel.appendChild(iconDel);
+    aEdit.appendChild(iconEdit);
+    aDel.href = `produto.php?crud=4&id=${objetoProdutos.id}`;
+    aEdit.href = `produto.php?crud=3&id=${objetoProdutos.id}`;
+    iconDel.classList.add("fa-solid", "fa-trash", "text-danger");
+    iconEdit.classList.add("fa-solid", "fa-pen", "text-primary");
+    $('#show-tab-pane>ul').append(li)
+}
+console.log('dashboard.js loaded')
