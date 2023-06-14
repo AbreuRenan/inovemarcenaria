@@ -47,7 +47,7 @@ $db = conectarBanco();
         </nav>
     </div>
     <div class="bg-light main-grid p-3 rounded-start-4"> <!-- Main area de exbição -->
-    <?php  ?>
+    <?php require_once('produtos-menu.php') ?>
     </div><!-- FIM Main area de exbição -->
 
 </body>
