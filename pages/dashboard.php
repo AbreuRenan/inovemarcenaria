@@ -2,7 +2,7 @@
 session_start();
 require_once('../src/db.php');
 $db = conectarBanco();
-$greetings = 'Bem vindo ' . $_SESSION['user'];
+
 ?>
 
 <head>
@@ -47,6 +47,7 @@ $greetings = 'Bem vindo ' . $_SESSION['user'];
         </nav>
     </div>
     <div class="bg-light main-grid p-3 rounded-start-4"> <!-- Main area de exbição -->
+    <?php  ?>
     </div><!-- FIM Main area de exbição -->
 
 </body>

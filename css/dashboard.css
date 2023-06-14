@@ -1,10 +1,10 @@
 #dash-body.grid {
     display: grid;
-    grid-template-columns: 200px 3fr 1fr;
+    grid-template-columns: 200px 3fr;
     grid-template-rows: minmax(auto, 80px) 1fr;
     grid-template-areas:
-        "header-grid header-grid header-grid"
-        "sidenav-grid main-grid main-grid";
+        "header-grid header-grid "
+        "sidenav-grid main-grid";
 
 }
 
