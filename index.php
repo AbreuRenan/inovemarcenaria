@@ -1,5 +1,8 @@
 <?php 
 require_once('./pages/header.php');
+require_once('./src/querys.php');
+$cards = listarItemDoIndex();
+show($cards);
 ?>
 
 <section id="carousel-home" class="container-fluid px-0">
@@ -58,7 +61,7 @@ require_once('./pages/header.php');
                     <div class="card mx-auto" style="width: 18rem;">
                         <img class="card-img-top" src="./img/10919031_645546298933962_2632864448512758701_n.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Card title 1</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                             <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -69,7 +72,7 @@ require_once('./pages/header.php');
                     <div class="card mx-auto" style="width: 18rem;">
                         <img class="card-img-top" src="./img/17522949_642815005903805_1477916256193767556_n.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Card title 2</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                             <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -80,7 +83,7 @@ require_once('./pages/header.php');
                     <div class="card mx-auto" style="width: 18rem;">
                         <img class="card-img-top" src="./img/19060164_675944452590860_6091572141545334283_n.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Card title 3</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                             <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -95,7 +98,7 @@ require_once('./pages/header.php');
             <div class="card d-flex flex-row p-0">
                 <img class="card-img-top " style="width: 50%;" src="./img/unnamed-file.jpg" alt="Card image cap">
                 <div class="card-body m-sm-5 col-3">
-                    <h3 class="card-title">Card title</h3>
+                    <h3 class="card-title">Card title 4</h3>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
                     <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -106,7 +109,7 @@ require_once('./pages/header.php');
             <div class="card d-flex flex-row-reverse p-0">
                 <img class="card-img-top " style="width: 50%;" src="./img/shutterstock_1107673826-1024x768.jpg" alt="Card image cap">
                 <div class="card-body m-sm-5 col-3">
-                    <h3 class="card-title">Card title</h3>
+                    <h3 class="card-title">Card title 5</h3>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
                     <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -164,5 +167,5 @@ require_once('./pages/header.php');
     </section>
 
 <?php
-require_once('./src/footer.php');
+require_once('footer.php');
 ?>

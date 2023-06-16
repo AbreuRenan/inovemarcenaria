@@ -25,16 +25,16 @@
             <div class="collapse navbar-collapse justify-content-end text-right p-3" id="navbar-header">
                 <ul class="navbar-nav mr-auto gap-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="./index.php">Home</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./sobre.php">Sobre Nós</a>
+                        <a class="nav-link" href="sobre.php">Sobre Nós</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./contato.php">Contato</a>
+                        <a class="nav-link" href="contato.php">Contato</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-light" href="./login.php">Login</a>
+                        <a class="btn btn-light" href="login.php">Login</a>
                     </li>
                 </ul>
             </div>

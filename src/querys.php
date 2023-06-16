@@ -30,8 +30,31 @@ function cadastrarProdutos($data) {
     $query->bindValue(':p', $data['preco'] );
     $query->bindValue(':d', $data['descricao'] );
     $query->bindValue(':img', $imgURL );
+    $response['status'] = $query->execute();
+    if ($response['status']) {
+        $lastInsert = $pdo->lastInsertId(); 
+        $response['msg'] = 'Cadastrado com Sucesso';
+        $response['last_id'] = $lastInsert;
+        $response['status'] = 200;
+    }
+    return $response;
+}
+
+function listarItemDoIndex() {
+    $pdo = conectarBanco();
+    $query = $pdo->prepare('SELECT * FROM indexpage');
     $query->execute();
-    $lastInsert = $pdo->lastInsertId();
-    return $lastInsert;
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+function deletarProduto($id) {
+    $pdo = conectarBanco();
+    $query = $pdo->prepare('DELETE FROM produtos WHERE id = :id');
+    $query->bindValue(':id', $id);
+    if ($query->execute()) {
+        $result = "Registro excluído com sucesso.";
+    } else {
+        $result = "Erro ao excluir o registro.";
+    }
+    return $result;
 }
 ?>

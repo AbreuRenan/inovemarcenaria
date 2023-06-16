@@ -30,7 +30,28 @@ try {
 $('#show-tab').ready(() => {
     getProdutos()
 })
+$('#show-tab').click(() => {;
+    getProdutos()
+})
+
+$('#form_cad_produto').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: '../src/produtos_crud.php',
+        data: new FormData(this),
+        dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData: false
+    }).done(result => {
+        console.log(result);
+        // preencherForm(result.last_id)
+    });
+})
+
 function getProdutos() {
+    $('#show-tab-pane>ul').empty();
     $.ajax({
         url: '../src/produtos_crud.php',
         method: 'POST',
@@ -45,7 +66,6 @@ function getProdutos() {
                 descricao: element.descricao,
                 imgURL: element.img
             }
-
             criarListaProdutos(data);
         });
     })
@@ -55,18 +75,27 @@ function criarListaProdutos(objetoProdutos) {
     <li class="d-flex list-group-item justify-content-between">
         <a href="produto.php?crud=2&id=${objetoProdutos.id}">${objetoProdutos.nome}</a>
         <div class="icons d-flex gap-3 align-items-center">
-            <a href="produto.php?crud=4&id=${objetoProdutos.id}">
+            <a href="#" onclick=deleteItemBy(${objetoProdutos.id})>
                 <i class="fa-solid fa-trash text-danger"></i>
             </a>
-            <a href="produto.php?crud=3&id=${objetoProdutos.id}">
-                <i class="fa-solid fa-pen text-primary"></i>
+            <a href="#" >
+                <i class="fa-solid fa-pen text-primary" ></i>
             </a>
         </div>
     </li>
     `)
 }
-console.log('dashboard.js loaded')
-
+function deleteItemBy(id) {
+    $.ajax({
+        url: "../src/produtos_crud.php",
+        method: "POST",
+        dataType: 'json',
+        data: { 'operation': 'delete', 'id': id }
+    }).done((result) => {
+        getProdutos();
+        console.log(result);
+    })
+}
 
 function sidenavMenuNavigationToggler() {
     const area_id = $('.sidenav-grid .active').children()[0].id;
