@@ -1,3 +1,5 @@
+import { enviarRequisicao, getProduto } from './formCadastro.controls.js';
+
 const btns = Array.from(document.querySelectorAll('[id^=menu-'));
 btns.forEach(element => {
     element.addEventListener('click', e => {
@@ -13,43 +15,54 @@ try {
     const imgPrevBtn = document.getElementById("img_preview_container");
     imgPrevBtn.addEventListener('click', () => {
         const div = document.querySelector('[for^=img_produto]');
-        const imgPrev = document.getElementById("img_preview")
-        const imgInput = document.getElementById("img_produto")
-        div.click()
+        const imgPrev = document.getElementById("img_preview");
+        const imgInput = document.getElementById("img_produto");
+        div.click();
         imgInput.onchange = evt => {
             const file = imgInput.files[0]
             if (file) {
-                imgPrev.src = URL.createObjectURL(file)
+                imgPrev.src = URL.createObjectURL(file);
             }
         }
     })
 } catch (error) {
-    console.log(error)
+    console.log(error);
 }
 
 $('#show-tab').ready(() => {
-    getProdutos()
+    getProdutos();
 })
-$('#show-tab').click(() => {;
-    getProdutos()
+$('#show-tab').click(() => {
+    ;
+    getProdutos();
 })
 
-$('#form_cad_produto').on('submit', function(e) {
+$('#form_cad_produto').on('submit', function (e) {
     e.preventDefault();
-    $.ajax({
-        method: 'POST',
-        url: '../src/produtos_crud.php',
-        data: new FormData(this),
-        dataType: 'json',
-        contentType: false,
-        cache: false,
-        processData: false
-    }).done(result => {
-        console.log(result);
-        // preencherForm(result.last_id)
+    const data = new FormData(this);
+    const url = '../src/produtos_crud.php';
+    const method = 'post';
+    enviarRequisicao(url, method, data).then(response => {
+        const data = getProduto(response[0]);
+        console.log('dashboard.js: '+data);
+        
     });
 })
 
+// function getProduto(id) {
+//     let result;
+//     $.ajax({
+//         url: '../src/produtos_crud.php',
+//         method: 'POST',
+//         dataType: 'json',
+//         data: { 'id': id, 'operation': 'select' }
+//     }).done(function (response) {
+//         console.log(response[0]);
+//         result = response[0];
+//     })
+//     console.log('in done from getprodutos: ' + result);
+//     return result;
+// }
 function getProdutos() {
     $('#show-tab-pane>ul').empty();
     $.ajax({
@@ -70,6 +83,7 @@ function getProdutos() {
         });
     })
 }
+
 function criarListaProdutos(objetoProdutos) {
     $('#show-tab-pane>ul').append(`
     <li class="d-flex list-group-item justify-content-between">

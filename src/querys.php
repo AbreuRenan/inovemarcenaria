@@ -19,7 +19,8 @@ function listarProdutos($id = null) {
         $query = $pdo->prepare('SELECT * FROM produtos');
     }
     $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    $response = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $response;
 }
 
 function cadastrarProdutos($data) {
@@ -30,8 +31,7 @@ function cadastrarProdutos($data) {
     $query->bindValue(':p', $data['preco'] );
     $query->bindValue(':d', $data['descricao'] );
     $query->bindValue(':img', $imgURL );
-    $response['status'] = $query->execute();
-    if ($response['status']) {
+    if ($query->execute()) {
         $lastInsert = $pdo->lastInsertId(); 
         $response['msg'] = 'Cadastrado com Sucesso';
         $response['last_id'] = $lastInsert;
@@ -43,18 +43,21 @@ function cadastrarProdutos($data) {
 function listarItemDoIndex() {
     $pdo = conectarBanco();
     $query = $pdo->prepare('SELECT * FROM indexpage');
-    $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    if($query->execute()) {
+         $response['data'] = $query->fetchAll(PDO::FETCH_ASSOC);
+         $response['status'] = 200;
+    }
+    return $response;
 }
 function deletarProduto($id) {
     $pdo = conectarBanco();
     $query = $pdo->prepare('DELETE FROM produtos WHERE id = :id');
     $query->bindValue(':id', $id);
-    if ($query->execute()) {
-        $result = "Registro excluído com sucesso.";
+    if ($query->execute()) {    
+        $response = "Registro excluído com sucesso.";
     } else {
-        $result = "Erro ao excluir o registro.";
+        $response = "Erro ao excluir o registro.";
     }
-    return $result;
+    return $response;
 }
 ?>

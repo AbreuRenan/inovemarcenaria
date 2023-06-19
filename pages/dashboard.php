@@ -37,5 +37,5 @@ $db = conectarBanco();
         <!-- FIM Main area de exbição -->
     </div>
 </body>
-<script src="../js/dashboard.js"></script>
+<script type="module" src="../js/dashboard.js"></script>
 </div>

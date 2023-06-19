@@ -2,7 +2,6 @@
 require_once('./pages/header.php');
 require_once('./src/querys.php');
 $cards = listarItemDoIndex();
-show($cards);
 ?>
 
 <section id="carousel-home" class="container-fluid px-0">
