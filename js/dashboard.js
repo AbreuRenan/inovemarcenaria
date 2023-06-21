@@ -1,5 +1,4 @@
-import { enviarRequisicao, getProduto } from './formCadastro.controls.js';
-
+import { enviarRequisicao, getProduto, deleteItemBy, criarListaProdutos, getProdutos} from './formCadastro.controls.js';
 const btns = Array.from(document.querySelectorAll('[id^=menu-'));
 btns.forEach(element => {
     element.addEventListener('click', e => {
@@ -10,6 +9,7 @@ btns.forEach(element => {
         sidenavMenuNavigationToggler();
     })
 });
+
 
 try {
     const imgPrevBtn = document.getElementById("img_preview_container");
@@ -33,7 +33,6 @@ $('#show-tab').ready(() => {
     getProdutos();
 })
 $('#show-tab').click(() => {
-    ;
     getProdutos();
 })
 
@@ -45,71 +44,8 @@ $('#form_cad_produto').on('submit', function (e) {
     enviarRequisicao(url, method, data).then(response => {
         const data = getProduto(response[0]);
         console.log('dashboard.js: '+data);
-        
     });
 })
-
-// function getProduto(id) {
-//     let result;
-//     $.ajax({
-//         url: '../src/produtos_crud.php',
-//         method: 'POST',
-//         dataType: 'json',
-//         data: { 'id': id, 'operation': 'select' }
-//     }).done(function (response) {
-//         console.log(response[0]);
-//         result = response[0];
-//     })
-//     console.log('in done from getprodutos: ' + result);
-//     return result;
-// }
-function getProdutos() {
-    $('#show-tab-pane>ul').empty();
-    $.ajax({
-        url: '../src/produtos_crud.php',
-        method: 'POST',
-        dataType: 'json',
-        data: { 'operation': 'select' }
-    }).done(result => {
-        result.forEach(element => {
-            const data = {
-                id: element.id,
-                nome: element.nome,
-                preco: element.preco,
-                descricao: element.descricao,
-                imgURL: element.img
-            }
-            criarListaProdutos(data);
-        });
-    })
-}
-
-function criarListaProdutos(objetoProdutos) {
-    $('#show-tab-pane>ul').append(`
-    <li class="d-flex list-group-item justify-content-between">
-        <a href="produto.php?crud=2&id=${objetoProdutos.id}">${objetoProdutos.nome}</a>
-        <div class="icons d-flex gap-3 align-items-center">
-            <a href="#" onclick=deleteItemBy(${objetoProdutos.id})>
-                <i class="fa-solid fa-trash text-danger"></i>
-            </a>
-            <a href="#" >
-                <i class="fa-solid fa-pen text-primary" ></i>
-            </a>
-        </div>
-    </li>
-    `)
-}
-function deleteItemBy(id) {
-    $.ajax({
-        url: "../src/produtos_crud.php",
-        method: "POST",
-        dataType: 'json',
-        data: { 'operation': 'delete', 'id': id }
-    }).done((result) => {
-        getProdutos();
-        console.log(result);
-    })
-}
 
 function sidenavMenuNavigationToggler() {
     const area_id = $('.sidenav-grid .active').children()[0].id;
@@ -133,3 +69,5 @@ function sidenavMenuNavigationToggler() {
             break;
     }
 }
+
+console.log('dashboard loaded')

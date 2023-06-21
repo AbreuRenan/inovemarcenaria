@@ -6,6 +6,7 @@ if (isset($_POST['operation'])) {
     $operation = $_POST['operation'];
 } else {
     echo json_encode("data operation not received");
+    exit;
 }
 
 if ($operation == 'select') {
