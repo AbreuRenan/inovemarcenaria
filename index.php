@@ -1,43 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+require_once('./pages/header.php');
+require_once('./src/querys.php');
+$cards = listarItemDoIndex();
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <script src="./js/bootstrap.min.js"></script>
-    <title>Inove Marcenária</title>
-</head>
-
-<body class="desktop">
-    <header id="home" class="header px-0 container-fluid">
-        <nav class="p-3 navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between p-0">
-            <a id="logo-home" class="navbar-brand text-light p-0" href="#">IN<span class="O-inove">O</span></span>VE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-header"
-                aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end text-right p-3" id="navbar-header">
-                <ul class="navbar-nav mr-auto gap-3">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light" href="#">Catálogo</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <section id="carousel-home" class="container-fluid px-0">
+<section id="carousel-home" class="container-fluid px-0">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -93,7 +60,7 @@
                     <div class="card mx-auto" style="width: 18rem;">
                         <img class="card-img-top" src="./img/10919031_645546298933962_2632864448512758701_n.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Card title 1</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                             <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -104,7 +71,7 @@
                     <div class="card mx-auto" style="width: 18rem;">
                         <img class="card-img-top" src="./img/17522949_642815005903805_1477916256193767556_n.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Card title 2</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                             <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -115,7 +82,7 @@
                     <div class="card mx-auto" style="width: 18rem;">
                         <img class="card-img-top" src="./img/19060164_675944452590860_6091572141545334283_n.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Card title 3</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
                             <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -130,7 +97,7 @@
             <div class="card d-flex flex-row p-0">
                 <img class="card-img-top " style="width: 50%;" src="./img/unnamed-file.jpg" alt="Card image cap">
                 <div class="card-body m-sm-5 col-3">
-                    <h3 class="card-title">Card title</h3>
+                    <h3 class="card-title">Card title 4</h3>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
                     <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -141,7 +108,7 @@
             <div class="card d-flex flex-row-reverse p-0">
                 <img class="card-img-top " style="width: 50%;" src="./img/shutterstock_1107673826-1024x768.jpg" alt="Card image cap">
                 <div class="card-body m-sm-5 col-3">
-                    <h3 class="card-title">Card title</h3>
+                    <h3 class="card-title">Card title 5</h3>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
                     <a href="#" class="btn btn-dark">Go somewhere</a>
@@ -197,35 +164,7 @@
             </div>
           </div>
     </section>
-    <footer class="footer container-fluid  bg-dark">
-        <div class="col-10 d-flex flex-column flex-md-row p-5 gap-5 justify-content-center mx-auto">
-            <div class="col">
-                <div class="">
-                    <h5 class="text-light"><a href="#home" class="text-white">Mapa do Site</a></h5>
-                    <p><a href="#destaques-home" class="text-secondary ">Destaques</a></p>
-                    <p><a href="#history-home" class="text-secondary">Apresentação</a></p>
-                    <p><a href="#accordion-home" class="text-secondary">FAQ</a></p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="">
-                    <h5 class="text-light" class="text-white">Entre Contato</h5>
-                    <p class="text-secondary text-nowrap">Email: inovemarcenaria@gmail.com</p>
-                    <p class="text-secondary">Horários: 09:00 às 18:00</p>
-                    <p class="text-secondary ">Tel: 21 9 9999-9999</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="">
-                    <h5 class="text-light" class="text-white">Onde Estamos</h5>
-                    <p class="text-secondary ">Rua Grafite, 264 - Nova Iguaçu/RJ</p>
-                    <p class="text-secondary">CEP: 26295-066</p>
-                    <p class="text-secondary">CNPJ: 123456789-0001/99</p>
-                </div>
-            </div>
-        </div>
 
-    </footer>
-</body>
-
-</html>
+<?php
+require_once('footer.php');
+?>
