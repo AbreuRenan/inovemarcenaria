@@ -1,6 +1,6 @@
 #dash-body.grid {
     display: grid;
-    grid-template-columns: 200px 3fr;
+    grid-template-rows: min-content auto;
     grid-template-areas:
         "header-grid header-grid "
         "sidenav-grid main-grid";

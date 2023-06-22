@@ -36,13 +36,13 @@ $('#show-tab').click(() => {
     getProdutos();
 })
 $('#cad-tab').click(() => {
-    $('#statusmsg').fadeOut(200);
+    $('#statusmsg').fadeOut(200).empty();
 })
 $('#form_cad_produto input').on('focus', () => {
-    $('#statusmsg').fadeOut(200);
+    $('#statusmsg').fadeOut(200).empty();
 })
 $('#form_cad_produto textarea').on('focus', () => {
-    $('#statusmsg').fadeOut(200);
+    $('#statusmsg').fadeOut(200).empty();
 })
 
 

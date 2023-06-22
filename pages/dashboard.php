@@ -6,8 +6,8 @@ $db = conectarBanco();
 ?>
 <?php require_once('header-dashboard.php') ?>
     <div class="bg-dark sidenav-grid">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark ps-4 py-5">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark ps-3">
+            <button class="navbar-toggler mb-5" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
                 aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
