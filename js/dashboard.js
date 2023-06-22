@@ -35,6 +35,16 @@ $('#show-tab').ready(() => {
 $('#show-tab').click(() => {
     getProdutos();
 })
+$('#cad-tab').click(() => {
+    $('#statusmsg').fadeOut(200);
+})
+$('#form_cad_produto input').on('focus', () => {
+    $('#statusmsg').fadeOut(200);
+})
+$('#form_cad_produto textarea').on('focus', () => {
+    $('#statusmsg').fadeOut(200);
+})
+
 
 $('#form_cad_produto').on('submit', function (e) {
     e.preventDefault();
@@ -79,9 +89,9 @@ function alertaCadastro(serverResponse) {
     const status = serverResponse.status;
     const msg = `<p>${serverResponse.msg}</p>`;
     if (status == 200){
-        $('#statusmsg').append(msg).addClass(`alert-success`).show()
+        $('#statusmsg').append(msg).addClass(`alert-success`).fadeIn(200)
     } else {
-        $('#statusmsg').append(msg).addClass(`alert-danger`).show()
+        $('#statusmsg').append(msg).addClass(`alert-danger`).fadeIn(200)
     }
 
 }

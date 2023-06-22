@@ -7,11 +7,11 @@ $db = conectarBanco();
 <?php require_once('header-dashboard.php') ?>
     <div class="bg-dark sidenav-grid">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark ps-4 py-5">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-header"
-                aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+                aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbar-header">
+            <div class="collapse navbar-collapse" id="sidebar-menu">
                 <ul class="navbar-nav mr-auto gap-3 d-flex flex-column w-100">
                     <li class="nav-item active">
                         <a id="menu-home" class="nav-link" href="#menu-home">Home</a>

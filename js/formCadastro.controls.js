@@ -23,16 +23,16 @@ export function getProdutos() {
     const method = 'POST';
     const data = new FormData();
     data.append('operation', 'select')
-    enviarRequisicao(url, method, data).then(result => {
-        result.forEach(returnedLine => {
-            const data = {
-                id: returnedLine.id,
-                nome: returnedLine.nome,
-                preco: returnedLine.preco,
-                descricao: returnedLine.descricao,
-                imgURL: returnedLine.img
+    enviarRequisicao(url, method, data).then(produtos => {
+        produtos.forEach(produto => {
+            const produtoObj = {
+                id: produto.id,
+                nome: produto.nome,
+                preco: produto.preco,
+                descricao: produto.descricao,
+                imgURL: produto.img
             }
-            criarListaProdutos(data);
+            criarListaProdutos(produtoObj);
         })
         deleteListener();
     })
@@ -45,8 +45,7 @@ export function getProduto(id) {
             dataType: 'json',
             data: { 'id': id, 'operation': 'select' },
             success: function (response) {
-                console.log(response);
-                resolve(response);
+                resolve(response[0]);
             },
             error: function (errorThrown) {
                 reject(errorThrown);
