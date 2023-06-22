@@ -28,8 +28,12 @@ if ($operation == 'insert') {
     echo json_encode($resuldb);    
 }
 if ($operation == 'delete') {
-    $id = $_POST['id'];
-    $resultdb = deletarProduto($id);
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];
+        $resultdb = deletarProduto($id);
+    } else {
+        $resuldb = 'id não recebido';
+    }
     echo json_encode($resultdb);
 }
 ?>

@@ -1,4 +1,4 @@
-import { enviarRequisicao, getProduto, deleteItemBy, criarListaProdutos, getProdutos} from './formCadastro.controls.js';
+import { enviarRequisicao, getProduto, getProdutos} from './formCadastro.controls.js';
 const btns = Array.from(document.querySelectorAll('[id^=menu-'));
 btns.forEach(element => {
     element.addEventListener('click', e => {
@@ -42,8 +42,10 @@ $('#form_cad_produto').on('submit', function (e) {
     const url = '../src/produtos_crud.php';
     const method = 'post';
     enviarRequisicao(url, method, data).then(response => {
-        const data = getProduto(response[0]);
-        console.log('dashboard.js: '+data);
+        const data = getProduto(response.last_id);
+        if (data) {
+            console.log(data);
+        }
     });
 })
 
