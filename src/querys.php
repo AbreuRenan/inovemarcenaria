@@ -18,8 +18,11 @@ function listarProdutos($id = null) {
     } else {
         $query = $pdo->prepare('SELECT * FROM produtos');
     }
-    $query->execute();
-    $response = $query->fetchAll(PDO::FETCH_ASSOC);
+    if ($query->execute()) {
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $response = 'Erro ao listar item';
+    } 
     return $response;
 }
 
@@ -36,6 +39,9 @@ function cadastrarProdutos($data) {
         $response['msg'] = 'Cadastrado com Sucesso';
         $response['last_id'] = $lastInsert;
         $response['status'] = 200;
+    } else {
+        $response['msg'] = 'Erro ao cadastrar';
+        $response['status'] = 500;
     }
     return $response;
 }

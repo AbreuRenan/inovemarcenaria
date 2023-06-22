@@ -17,7 +17,26 @@ export function enviarRequisicao(url, method, data) {
         });
     });
 }
-
+export function getProdutos() {
+    $('#show-tab-pane>ul').empty();
+    const url = '../src/produtos_crud.php';
+    const method = 'POST';
+    const data = new FormData();
+    data.append('operation', 'select')
+    enviarRequisicao(url, method, data).then(result => {
+        result.forEach(returnedLine => {
+            const data = {
+                id: returnedLine.id,
+                nome: returnedLine.nome,
+                preco: returnedLine.preco,
+                descricao: returnedLine.descricao,
+                imgURL: returnedLine.img
+            }
+            criarListaProdutos(data);
+        })
+        deleteListener();
+    })
+}
 export function getProduto(id) {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -69,31 +88,10 @@ function deleteListener() {
     delbtns.forEach(e => {
         const clickFun = event => {
             let a = event.target.parentNode;
-            let id = a.id.substring(a.id.length-2);
+            let id = a.id.substr(11);
             deleteItemBy(id);
         }
         e.removeEventListener('click', clickFun);
         e.addEventListener('click', clickFun)
     })
-}
-export function getProdutos() {
-    $('#show-tab-pane>ul').empty();
-    const url = '../src/produtos_crud.php';
-    const method = 'POST';
-    const data = new FormData();
-    data.append('operation', 'select')
-    enviarRequisicao(url, method, data).then(result => {
-        result.forEach(returnedLine => {
-            const data = {
-                id: returnedLine.id,
-                nome: returnedLine.nome,
-                preco: returnedLine.preco,
-                descricao: returnedLine.descricao,
-                imgURL: returnedLine.img
-            }
-            criarListaProdutos(data);
-        })
-        deleteListener();
-    })
-
 }
