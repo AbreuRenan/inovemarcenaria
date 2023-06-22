@@ -1,6 +1,6 @@
 <form id="form_cad_produto" class="container p-2" enctype="multipart/form-data" action="../src/produtos_crud.php" method="POST">
-    <div id="statusmsg" class="statusmsg alert alert-success" >
-        <p>Produto Cadastrado com sucesso</p>
+    <div id="statusmsg" class="statusmsg alert" style="display: none">
+        
     </div>
     <div class="col row">
         <div class="col-8 d-flex flex-column gap-2">
