@@ -11,7 +11,7 @@ $db = conectarBanco();
                 aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="sidebar-menu">
+            <div class="collapse navbar-collapse pt-5" id="sidebar-menu">
                 <ul class="navbar-nav mr-auto gap-3 d-flex flex-column w-100">
                     <li class="nav-item active">
                         <a id="menu-home" class="nav-link" href="#menu-home">Home</a>
