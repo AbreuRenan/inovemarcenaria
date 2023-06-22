@@ -35,16 +35,30 @@ $('#show-tab').ready(() => {
 $('#show-tab').click(() => {
     getProdutos();
 })
+$('#cad-tab').click(() => {
+    $('#statusmsg').fadeOut(200).empty();
+})
+$('#form_cad_produto input').on('focus', () => {
+    $('#statusmsg').fadeOut(200).empty();
+})
+$('#form_cad_produto textarea').on('focus', () => {
+    $('#statusmsg').fadeOut(200).empty();
+})
+
 
 $('#form_cad_produto').on('submit', function (e) {
     e.preventDefault();
-    const data = new FormData(this);
+    const formdata = new FormData(this);
     const url = '../src/produtos_crud.php';
     const method = 'post';
-    enviarRequisicao(url, method, data).then(response => {
-        const data = getProduto(response.last_id);
-        if (data) {
-            console.log(data);
+    enviarRequisicao(url, method, formdata).then(response => {
+        if (response.status == 200) {
+            const responseData = getProduto(response.last_id);
+            alertaCadastro(response);
+            return responseData;
+        } else {
+            alertaCadastro(response);
+            return response;
         }
     });
 })
@@ -71,5 +85,14 @@ function sidenavMenuNavigationToggler() {
             break;
     }
 }
+function alertaCadastro(serverResponse) {
+    const status = serverResponse.status;
+    const msg = `<p>${serverResponse.msg}</p>`;
+    if (status == 200){
+        $('#statusmsg').append(msg).addClass(`alert-success`).fadeIn(200)
+    } else {
+        $('#statusmsg').append(msg).addClass(`alert-danger`).fadeIn(200)
+    }
 
+}
 console.log('dashboard loaded')

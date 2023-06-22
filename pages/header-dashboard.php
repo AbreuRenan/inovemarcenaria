@@ -12,8 +12,8 @@
     <title>Inove | Painel Administrativo</title>
 </head>
 <body id="dash-body" class="grid container-fluid bg-dark ps-0 pe-0 h-100">
-    <header id="dashboard" class="px-0 container-fluid header-grid mb-5">
-        <nav class="p-3 navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between p-0">
+    <header id="dashboard" class="px-0 container-fluid header-grid mb-3">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between p-3 px-4">
             <a id="logo-home" class="navbar-brand text-light p-0" href="dashboard.php">
                 IN<span class="O-inove">O</span></span>VE
             </a>
