@@ -95,4 +95,5 @@ function alertaCadastro(serverResponse) {
     }
 
 }
+
 console.log('dashboard loaded')
