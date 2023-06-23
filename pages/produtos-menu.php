@@ -1,4 +1,4 @@
-<div id="main-home" class="fade" style="display:none">
+<div id="main-produtos" class="fade" style="display:none">
     <ul class="nav nav-tabs gap-1" id="productTabs">
         <button class="nav-link active" id="cad-tab" data-bs-toggle="tab" data-bs-target="#cad-tab-pane" type="button"
             role="tab">

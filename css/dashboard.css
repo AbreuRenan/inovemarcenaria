@@ -24,6 +24,7 @@
 .main-grid {
     grid-area: main-grid;
     max-width: 100vw;
+    height: min-content;
 }
 
 .sidenav-grid .menu-list {

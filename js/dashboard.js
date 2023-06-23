@@ -12,7 +12,7 @@ btns.forEach(element => {
 
 
 try {
-    const imgPrevBtn = document.getElementById("img_preview_container");
+    const imgPrevBtn = document.querySelector("#form_cad_produto #img_preview_container")
     imgPrevBtn.addEventListener('click', () => {
         const div = document.querySelector('[for^=img_produto]');
         const imgPrev = document.getElementById("img_preview");
@@ -27,6 +27,27 @@ try {
     })
 } catch (error) {
     console.log(error);
+}
+
+try {
+    const homePreviewBtn = document.querySelectorAll("#main-home #img_preview_container"); 
+    for (let i = 0; i <homePreviewBtn.length; i++) {
+        const div = document.querySelectorAll('#main-home [for^=img_produto]');
+        const imgInput = document.querySelectorAll("#main-home [id^=img_produto]");
+        const imgPrev = document.querySelector(`#main-home [id^=img_preview${i+1}]`)
+        homePreviewBtn[i].addEventListener('click', () => {
+            div[i].click();
+            imgInput[i].onchange = () =>{
+                const imgFile = imgInput[i].files[0]
+                if (imgFile) {
+                    imgPrev.src = URL.createObjectURL(imgFile)
+                }
+            }
+        })
+    }
+    
+} catch (error) {
+    console.log(error)
 }
 
 $('#show-tab').ready(() => {
@@ -67,13 +88,13 @@ function sidenavMenuNavigationToggler() {
     const area_id = $('.sidenav-grid .active').children()[0].id;
     switch (area_id) {
         case 'menu-home':
-            $('#main-home').addClass('fade').hide();
-            $('#main-produtos').removeClass('fade').show();
+            $('#main-home').removeClass('fade').show();
+            $('#main-produtos').addClass('fade').hide();
             $('#main-opcoes').addClass('fade').hide();
             break;
         case 'menu-produtos':
-            $('#main-home').removeClass('fade').show();
-            $('#main-produtos').addClass('fade').hide();
+            $('#main-home').addClass('fade').hide();
+            $('#main-produtos').removeClass('fade').show();
             $('#main-opcoes').addClass('fade').hide();
             break;
         case 'menu-opcoes':
